@@ -3,12 +3,14 @@ require_once 'vendor/autoload.php';
 require 'GitHub.php';
 require 'Twitter.php';
 
+$config = include('config/config.php');
 
-define('CONSUMER_KEY', 'XXX');
-define('CONSUMER_SECRET', 'XXX');
-define('ACCESS_TOKEN', 'XXX');
-define('ACCESS_TOKEN_SECRET', 'XXX');
-define('GITHUB_ACCESS_TOKEN','XXX');
+
+define('CONSUMER_KEY', $config['api']['twitter']['consumerKey']);
+define('CONSUMER_SECRET', $config['api']['twitter']['consumerSecret']);
+define('ACCESS_TOKEN', $config['api']['twitter']['accessToken']);
+define('ACCESS_TOKEN_SECRET', $config['api']['twitter']['accessTokenSecret']);
+define('GITHUB_ACCESS_TOKEN', $config['api']['github']['accessToken']);
 
 $twitter = new Twitter(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
 $github = new GitHub(GITHUB_ACCESS_TOKEN);
