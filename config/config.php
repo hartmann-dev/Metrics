@@ -1,8 +1,8 @@
 <?php
 //defaults
 $files = [
-    'in' => 'list.php',
-    'out' => 'urlist.php',
+    'in' => 'list.csv',
+    'out' => 'urlist.csv',
 ];
 
 if(file_exists('file.config.php')){
