@@ -5,19 +5,11 @@ require 'Twitter.php';
 
 $config = include('config/config.php');
 
+$twitter = new Twitter($config['api']['twitter']);
+$github = new GitHub($config['api']['github']);
 
-define('CONSUMER_KEY', $config['api']['twitter']['consumerKey']);
-define('CONSUMER_SECRET', $config['api']['twitter']['consumerSecret']);
-define('ACCESS_TOKEN', $config['api']['twitter']['accessToken']);
-define('ACCESS_TOKEN_SECRET', $config['api']['twitter']['accessTokenSecret']);
-define('GITHUB_ACCESS_TOKEN', $config['api']['github']['accessToken']);
-
-$twitter = new Twitter(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
-$github = new GitHub(GITHUB_ACCESS_TOKEN);
-
-
-$readFileHandle =  fopen("list.csv", "r");
-$writeFileHandle = fopen("urlist.csv", "w");
+$readFileHandle =  fopen($config['files']['in'], "r");
+$writeFileHandle = fopen($config['files']['out'], "w");
 
 if (FALSE != $readFileHandle && FALSE != $writeFileHandle) {
     fputcsv($writeFileHandle,

@@ -4,10 +4,10 @@ class GitHub
 {
     private $client;
 
-    public function __construct($accessToken)
+    public function __construct(array $config)
     {
         $this->client = new \Github\Client();
-        $this->client->authenticate($accessToken, Github\Client::AUTH_HTTP_TOKEN);
+        $this->client->authenticate($config['accessToken'], Github\Client::AUTH_HTTP_TOKEN);
     }
 
     public function getContributorCount($repo, $anonymousContributor = false)

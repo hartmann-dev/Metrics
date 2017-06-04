@@ -9,9 +9,12 @@ class Twitter
      */
     private $conn;
 
-    public function __construct($consumerKey, $consumerSecret, $oauthToken, $oauthTokenSecret)
+    public function __construct(array $config)
     {
-        $this->conn = new TwitterOAuth($consumerKey, $consumerSecret, $oauthToken, $oauthTokenSecret);
+        $this->conn = new TwitterOAuth(
+            $config['consumerKey'], $config['consumerSecret'],
+            $config['accessToken'], $config['accessTokenSecret']
+        );
         $this->conn->get("account/verify_credentials");
     }
 
